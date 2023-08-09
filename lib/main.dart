@@ -1,8 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:my_chat_app/screens/auth/login_screen.dart';
+import 'package:my_chat_app/screens/splash_screen.dart';
+
+import 'firebase_options.dart';
 
 late Size mq;
 void main() {
+  _initializeFirebase();
   runApp(MyApp());
 }
 
@@ -27,6 +31,12 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.white,
           ),
         ),
-        home: LoginScreen());
+        home: SplashScreen());
   }
+}
+
+_initializeFirebase() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
